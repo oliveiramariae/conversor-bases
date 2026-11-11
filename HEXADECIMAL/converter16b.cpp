@@ -39,6 +39,7 @@ string limparEntradaB16(string nTexto){
 
 // base 16 - base 10
 unsigned long long hexParaDec(string nTexto){
+	//maior hexadecimal aceito: FFFFFFFFFFFFFFFF
 	unsigned long long uhd = 1, resultadoD = 0; //uhd=unidade/elemento hexadecimal
 	int nHex;
 	string novaEntradaTexto = limparEntradaB16(nTexto), nTHex;
