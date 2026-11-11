@@ -195,11 +195,25 @@ string hexParaB4(string nTexto){
 }
 
 string hexParaB8(string nTexto){
-	string entradaLimpa = nTexto, resBin = "";
+	string entradaLimpa = nTexto, resBin = "", resultado = "";
+	int soma = 0;
+	//Converter cada digito hexadecimal para 4 bits binario
 	for (int i=0; i < entradaLimpa.length(); i++){
-		cout << hexParaBin(string(1, entradaLimpa[i])) << endl;
+		resBin += hexParaBin(string(1, entradaLimpa[i]));
 	}
-	return "";
+	while (resBin.length()%3 != 0){
+		resBin = "0" + resBin;
+	}
+	cout << resBin;
+	for (int i=0; i < resBin.length(); i+=3){
+		soma += (resBin[i] - '0') * pow(2, 2);
+		soma += (resBin[i+1] - '0') * pow(2, 1);
+		soma += (resBin[i+2] - '0') * pow(2, 0);
+
+		resultado += to_string(soma);
+		soma = 0;
+	}
+	return resultado;
 }
 
 int main(){
