@@ -2,6 +2,7 @@
 #include <cmath>
 #include <string>
 #include <algorithm>
+#include <limits>
 
 using namespace std;
 
@@ -10,6 +11,32 @@ using namespace std;
 // base 16 - base 4
 // base 16 - base 8
 
+string limparEntradaB16(string nTexto){
+	string entradaLimpa = "";
+	char caractere;
+	for (int i=0; i < nTexto.length(); i++){
+		caractere = nTexto[i];
+		if (caractere == 'a' || caractere == 'A'){
+			entradaLimpa += 'A';
+		}else if(caractere == 'b' || caractere == 'B'){
+			entradaLimpa += 'B';
+		}else if(caractere == 'c' || caractere == 'C'){
+			entradaLimpa += 'C';
+		}else if(caractere == 'd' || caractere == 'D'){
+			entradaLimpa += 'D';
+		}else if(caractere == 'e' || caractere == 'E'){
+			entradaLimpa += 'E';
+		}else if(caractere == 'f' || caractere == 'F'){
+			entradaLimpa += 'F';
+		}else if (caractere == '0' || caractere == '1' || caractere == '2' || caractere == '3'
+				|| caractere == '4' || caractere == '5' || caractere == '6' || caractere == '7'
+				|| caractere == '8' || caractere == '9' ){
+			entradaLimpa += caractere;
+		}
+	}
+	cout << entradaLimpa << endl;
+	return entradaLimpa;
+}
 
 // base 16 - base 10
 unsigned long long hexParaDec(string nTexto){
@@ -72,68 +99,42 @@ unsigned long long hexParaDec(string nTexto){
 
 // base 16 - base 2
 string hexParaBin(string nTexto){
-	string resultado = "", entradaLimpa, restosE; //restosE=restos de cada elemento hexadecimal
+	string entradaLimpa = limparEntradaB16(nTexto), resultado = "", restosQ = "";
+	char caractere;
+	int resto;
 	unsigned long long quociente;
-	//limpar entrada
-	for (int i=0; i < nTexto.length(); i++){
-		if (nTexto[i] == '0' || nTexto[i] == '1' || nTexto[i] == '2'
-			|| nTexto[i] == '3' || nTexto[i] == '4' || nTexto[i] == '5'
-			|| nTexto[i] == '6' || nTexto[i] == '7' || nTexto[i] == '8'
-			|| nTexto[i] == '9'){
-				entradaLimpa += nTexto[i];
-			}
-		if(nTexto[i] == 'A' || nTexto[i] == 'a'){
-			entradaLimpa += "A";
-		}
-		if(nTexto[i] == 'B' || nTexto[i] == 'b'){
-			entradaLimpa += "B";
-		}
-		if(nTexto[i] == 'C' || nTexto[i] == 'c'){
-			entradaLimpa += "C";
-		}
-		if(nTexto[i] == 'D' || nTexto[i] == 'd'){
-			entradaLimpa += "D";
-		}
-		if(nTexto[i] == 'E' || nTexto[i] == 'e'){
-			entradaLimpa += "E";
-		}
-		if(nTexto[i] == 'F' || nTexto[i] == 'f'){
-			entradaLimpa += "F";
-		}
+	
+	if (entradaLimpa.length() <= 0){
+		return "vazio";
 	}
-	//
-	//converter para binario
 	for (int i=0; i < entradaLimpa.length(); i++){
-		//Converter letras para numeros
-		if (entradaLimpa[i] == 'A'){
+		caractere = entradaLimpa[i];
+		if (caractere == 'A'){
 			quociente = 10;
-		}else if(entradaLimpa[i] == 'B'){
+		}else if(caractere == 'B'){
 			quociente = 11;
-		}else if(entradaLimpa[i] == 'C'){
+		}else if(caractere == 'C'){
 			quociente = 12;
-		}else if(entradaLimpa[i] == 'D'){
+		}else if(caractere == 'D'){
 			quociente = 13;
-		}else if(entradaLimpa[i] == 'E'){
+		}else if(caractere == 'E'){
 			quociente = 14;
-		}else if(entradaLimpa[i] == 'F'){
+		}else if(caractere == 'F'){
 			quociente = 15;
 		}else{
-			quociente = (entradaLimpa[i] - '0'); //converter string para int
+			quociente = caractere - '0';
 		}
-		//
-		while (quociente > 0){
-			restosE += to_string(quociente%2);
+		while (quociente >= 1){
+			resto = quociente%2;
+			restosQ = to_string(resto) + restosQ;
 			quociente = quociente/2;
 		}
-		while (restosE.length() < 4){
-			restosE += "0";
+		while (restosQ.length() < 4){
+			restosQ = "0" + restosQ;
 		}
-		reverse(restosE.begin(), restosE.end());
-
-		resultado += restosE;
-		restosE = "";
+		resultado += restosQ;
+		restosQ = "";
 	}
-	//
 	return resultado;
 }
 
@@ -223,12 +224,13 @@ int main(){
 	
 	cout << "O que voce quer fazer? (1-hex para decimal; 2-hex para binario; 3-hexadecimal para base4; 4-hexadecimal para base8)" << endl;
 	cin >> op;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 	switch (op){
 
 		case 1:
 		cout << "Coloque o valor hexadecimal que sera convertido: " << endl;
-		cin >> nTexto;
+		getline(cin, nTexto);
 
 		resultadoD = hexParaDec(nTexto);
 		cout << "o resultado da conversao de hexadecimal para decimal eh: " << resultadoD << endl;
@@ -236,7 +238,7 @@ int main(){
 
 		case 2:
 		cout << "Coloque o valor hexadecimal que sera convertido para binario: " << endl;
-		cin >> nTexto; 
+		getline(cin, nTexto); 
 
 		resultado = hexParaBin(nTexto);
 		cout << "o resultado da conversao de hexadecimal para binario eh: " << resultado << endl;
@@ -245,14 +247,14 @@ int main(){
 
 		case 3:
 		cout << "Coloque o valor hexadecimal que sera convertido: " << endl;
-		cin >> nTexto;
+		getline(cin, nTexto);
 
 		resultado = hexParaB4(nTexto);
 		cout << "o resultado da conversao de hexadecimal para base 4 eh: " << resultado << endl;
 
 		case 4:
 		cout << "Coloque o valor hexadecimal que sera convertido para base 8: " << endl;
-		cin >> nTexto;
+		getline(cin, nTexto);
 
 		resultado = hexParaB8(nTexto);
 		cout << "o resultado da conversao de hexadecimal para base 8 eh: " << resultado << endl;
