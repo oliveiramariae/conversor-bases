@@ -9,7 +9,7 @@ Projeto em C++ feito. O programa converte números entre cinco bases numéricas.
 | Base | Nome | Símbolos usados |
 |------|------|-----------------|
 | 2 | Binário | 0 e 1 |
-| 4 | Quaternário | 0, 1, 2 e 3 |
+| 4 | Quaternário | 0, a 3 |
 | 8 | Octal | 0 a 7 |
 | 10 | Decimal | 0 a 9 (o que usamos no dia a dia) |
 | 16 | Hexadecimal | 0 a 9 e A a F |
