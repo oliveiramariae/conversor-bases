@@ -35,6 +35,7 @@ Caso a entrada contenha algum caractere inválido, ela será limpa, impedindo qu
 # São considerados caracteres hexadecimais válidos:
 
 Números de 0 a 9.
+
 Letras de A a F.
 
 # Observações e limitações
