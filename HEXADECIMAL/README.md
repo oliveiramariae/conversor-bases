@@ -7,9 +7,13 @@ Um programa desenvolvido em C++ que realiza a conversão de números hexadecimai
 O programa apresenta um menu interativo para que o usuário selecione o tipo de conversão desejada:
 
 Selecione uma opção:
+
 1 - Hexadecimal para Decimal
+
 2 - Hexadecimal para Binário
+
 3 - Hexadecimal para Base 4
+
 4 - Hexadecimal para Base 8
 
 # Conversões disponíveis
