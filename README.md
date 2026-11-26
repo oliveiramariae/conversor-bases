@@ -1,5 +1,13 @@
 # Conversor de Bases Numéricas
 
+## Integrantes
+ADS - manhã - primeiro semestre
+
+- Maria Eduarda (oliveiramariae)
+- Carolina (carolinabertoli0911)
+- Anderson da Silva Assis (Anderson23A)
+- Lucas da Silva Assis (lucasrcfm0)
+
 Projeto em C++ feito. O programa converte números entre cinco bases numéricas.
 
 ## O que são bases numéricas?
@@ -46,11 +54,3 @@ Dentro de cada pasta tem os arquivos `.cpp` (o código) e um `README.md` com mai
    - Windows: `quartenario.exe`
 
 5. Escolha a conversão no menu e digite o número.
-
-## Integrantes
-
-- Maria Eduarda (oliveiramariae) – BINARIO
-- Carolina (carolinabertoli0911) – DECIMAL
--  – pasta responsável
-- Anderson da Silva Assis (Anderson23A) - HEXADECIMAL
-- Lucas da Silva Assis (lucasrcfm0) - QUARTENARIO
